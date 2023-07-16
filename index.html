@@ -20,7 +20,7 @@
         <!-- google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Rouge+Script&display=swap" rel="stylesheet">
         <title>You are invited to the wedding of Janssen and Angelica!</title>
         <style>
             /* html reset */
@@ -41,9 +41,9 @@
               --p-gold: #B28E64;
               --p-black: #000;
               --p-white: #fff;
-              --f-qwigley: 'Qwigley', cursive;
-              --f-radley: 'Radley', serif;
-              --f-work: 'Work Sans', sans-serif;
+              --p-gray: #808080;
+              --f-rouge: 'Rouge Script', cursive;
+              --f-quick: 'Quicksand', sans-serif;
               --f-s-r: 16px;
               --f-s-m: 20px;
               --f-s-l: 32px;
@@ -52,8 +52,34 @@
               --f-names-sm: 112px
             }
             .font-rouge {
-              font-family: 'Rouge Script', cursive;
+              font-family: var(--f-rouge)
             }
+            .font-quicksand {
+              font-family: var(--f-quick)
+            }
+            .font-sm {
+              font-size: var(--f-s-r);
+            }
+            /* section */
+            .sec-one h1 {
+              line-height: 20px;
+              font-size:55px;
+            }
+            .sec-one .font-sm {
+              margin-top:30px;
+            }
+            .sec-two {
+              color: var(--p-black);
+              font-family: var(--f-quick);
+            }
+            .sec-two h6 {
+              font-size: 35px;
+              font-style:italic;
+              color: var(--p-green);
+              font-family: var(--f-rouge);
+              font-weight: 600;
+            }
+
             /* parallax styling */
             .parallax {
                 /* Set the parallax background */
@@ -93,6 +119,98 @@
                 /* Style the layer content */
                 padding: 20px;
             }
+            /* color pallete */
+            .color-circle {
+                display: inline-block;
+                width: 45px;
+                height: 45px;
+                margin: 5px;
+                border-radius: 50%;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            }
+            /* program proper */
+            .schedule {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                max-width: 600px;
+                margin: auto;
+                text-align: left;
+                position:relative;
+            }
+            .schedule div {
+                font-family: var(--f-quick);
+            }
+            .sch_left {
+                border-right: 1px solid var(--p-green);
+            }
+            .sch_date {
+                color: black;
+                text-transform: capitalize;
+            }
+            .sch_day {
+                color: var(--p-green);
+                text-transform: capitalize;
+            }
+            .sch_right {
+                padding: 0 0 0 20px;
+                margin-bottom: 25px;
+            }
+            .sch_time {
+                color: var(--p-green);
+            }
+            .sch_time:before {
+                content: '';
+                display: block;
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+                background-color: var(--p-green);
+                position: absolute;
+                border: 2px solid white;
+                margin-left:-26px;
+                margin-top:5px;
+            }
+            .sch_desc {
+                margin-top: 12px;
+                margin-bottom: 10px;
+                font-weight: 300;
+            }
+            .sch_location {
+                color: grey;
+                text-transform: uppercase;
+                font-size: var(--f-s-r);
+                margin-top: 5px;
+            }
+            /* modal */
+            .modal {
+                max-height: 90%!important;
+                top:7%;
+                opacity:.9!important;
+                color:var(--p-black);
+                z-index: 2;
+            }
+            .modal-title {
+                font-size:var(--f-s-m);
+            }
+            /* media queries for mobile */
+            @media (min-width: 300px) {
+
+            }
+
+            /* media queries for desktop and tablet */
+            @media (min-width: 769px) {
+
+
+            }
+            /* Media query for small devices (max-width 768px) */
+            @media only screen and (max-width: 768px) {
+              /* Override the flexbox alignment for small devices */
+              .parallax-content {
+                align-items: flex-start;
+                padding-top:200px;
+              }
+            }
         </style>
     </head>
     <body>
@@ -102,9 +220,66 @@
         <div class="parallax">
             <div class="parallax-content">
                 <div class="parallax-layer">
-                    <h5 class="font-rouge">In God's Perfect Time</h5>
-                    <h1>Jansen & Angelica</h1>
+                  <div class="sec-one">
+                    <h5 class="font-quicksand">In God's Perfect Time</h5>
+                    <h1 class="font-rouge">Jansen and Angelica</h1>
+                    <h5 class="font-quicksand font-sm">Your pressence will complete our happiness</h5>
+                    <span class="font-sm font-quicksand">August 19, 2023 03:00 PM </span>
+                    <h5 class="font-quicksand" style="font-weight: 300;">#JANseenhisANGEL</h5>
+                    <br/>
+                    <br/>
                     <button data-target="rsvp" class="btn modal-trigger btn-custom">RSVP</button>
+                    <!-- modal form -->
+                    <div id="rsvp" class="modal">
+                      <form id="rsvp">
+                          <div class="modal-content">
+                              <h6 class="font-quicksand" style="color:#00432F;font-size:25px;">RSVP for our Wedding</h6>
+                              <span class="modal-subtitle font-quicksand">We can't wait to celebrate with you and your presence is important to us! We reserved 2 seats for you. The favor of your response is requested on or before August 23, 2023</span>
+                              <br/>
+                              <div class="mt-20">
+                                  <div class="input-field">
+                                      <input type="text" placeholder="Input your first name and last name" id="name" name="entry.183768109" class="validate" required>
+                                      <label for="name">Name</label>
+                                  </div>
+                                  <div class="input-field">
+                                      <input type="text" name="entry.64734840" id="contact_num" placeholder="Input your contact number" class="validate" required>
+                                      <label for="number">Contact Number</label>
+                                  </div>
+                                  <div style="text-align: left;">
+                                      <span class="font-work-sans f-light">We kindly request that you indicate whether you will be attending the wedding with a guest by checking the appropriate box below and including the name of your guest?</span>
+                                      <br/>
+                                      <br/>
+                                      <label>
+                                          <input name="group1" type="radio" value="1"/>
+                                          <span>Attending with a guest</span>
+                                      </label>
+                                      <label>
+                                          <input name="group1" type="radio" checked value="0"/>
+                                          <span>Attending alone</span>
+                                      </label>
+                                      <br/>
+                                      <br/>
+                                      <div id="guest" style="display:none;" class="input-field">
+                                          <input type="text" placeholder="Input your guest first name and last name" id="guest_name" name="entry.1837546959" class="validate">
+                                          <label for="guest_name">Guest Name</label>
+                                          <br/>
+                                          <span class="font-work-sans f-light">We sincerely apologize for any disappointment by only allowing one seat for your guest in our wedding RSVP.</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#!" id="cancel" class="modal-close waves-effect waves-green btn-flat">cancel</a>
+                              <button type="submit" class="btn waves-effect waves-light">
+                                  <i class="material-icons right">send</i>&nbsp;&nbsp; Send
+                              </button>
+                          </div>
+                      </form>
+                  </div>
+
+
+
+                  </div>
                 </div>
             </div>
             
@@ -112,27 +287,161 @@
 
         <div class="parallax">
             <div class="parallax-content">
-              <div class="parallax-layer">
+              <div class="parallax-layer" style="width: 100%; background-color: #fff; border-top: 5px solid #00432F">
                 <div class="layer-content">
-                  <h1>About Me</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <div class="sec-two">
+                    <div class="row">
+                      <div class="col m4 s12">
+                        <h6>Date and Time</h6>
+                        <p>
+                          August 19, 2023 03:00 PM
+                          <br/>Saturday
+                        </p>
+                        <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Janssen%20and%20Angelica%20Wedding&dates=20230819T120000Z/20230819T130000Z&details=Wedding%20at%20San%20Agustin%20Church,%20Intramuros,%20Manila&location=San%20Agustin%20Church,%20Intramuros,%20Manila" target="_blank">
+                          Add to Calendar
+                        </a>
+                      </div>
+                      <div class="col m4 s12">
+                        <h6>Location</h6>
+                        <p>
+                          San Agustin Church, Intramuros Manila
+                          <br/>
+                          La Castellana, Cabildo St. Intramuros Manila
+                        </p>
+                        <a target="_blank" href="https://www.google.com/maps/dir/La+Castellana,+Intramuros,+Manila,+Metro+Manila/San+Agustin+Church,+General+Luna+St,+Intramuros,+Manila,+1002+Metro+Manila/@14.5902985,120.972142,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3397ca17dc4388e9:0x8c8650dabc86a66!2m2!1d120.9744472!2d14.5913672!1m5!1m1!1s0x3397ca3d23445363:0x6c2d1781ec26636a!2m2!1d120.975184!2d14.5891514!3e0?entry=ttu">Get Directions</a>
+                      </div>
+                      <div class="col m4 s12">
+                        <h6>Contact</h6>
+                        <p>
+                          Need help? or Info?
+                          <br/>
+                          put contact number here
+                          <br/>
+                          email here
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px;">
+                      <div class="col m4 s12">
+                        <center>
+                          <h6>Wedding Dress Code</h6>
+                          <img src="img/dress-code.png" style="width: 50%;display:block;" alt="">
+                          <p>We kindly request our guests to wear these colors for our special day</p>
+                          <div class="palette">
+                            <center>
+                                <div class="color-circle" style="background-color: #738593;"></div>
+                                <div class="color-circle" style="background-color: #C3C8CC"></div>
+                                <div class="color-circle" style="background-color: #A2A8A4;"></div>
+                                <div class="color-circle" style="background-color: #E9BCA5;"></div>
+                            </center>
+                          </div>
+                        </center>
+                      </div>
+                      <div class="col m4 s12">
+                        <h6>Program Proper</h6>
+                        <div class="schedule" style="margin-top:30px">	
+                          <div class="sch_left ">
+                              <div class="sch_date">August 19, 2023</div>
+                              <div class="sch_day">Saturday</div>
+                          </div>
+                          <div class="sch_right">
+                              <div class="sch_time">3:00 PM <a>•</a> <u>CEREMONY</u></div>
+                              <div class="sch_desc">Intramuros, Manila</div>
+                              <div class="sch_location ">San Agustin Church</div>
+                          </div>
+                          <div class="sch_left hidden">
+                              <div class="sch_date">August 19, 2023</div>
+                              <div class="sch_day">Saturday</div>
+                          </div>
+                          <div class="sch_right">
+                              <div class="sch_time">5:00 pm <a>•</a> <u>RECEPTION &amp; DINNER</u></div>
+                              <div class="sch_desc">Cabildo St. Intramuros, Manila</div>
+                              <div class="sch_location ">LA CASTELLANA</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col m4 s12">
+                        <h6>In Lieu of Gifts</h6>
+                        <p>With all the blessings that GGood Poured out on us we cannot ask for more. Your presence and prayers are all we request. But if you desire to bless us. Monetary gifts are what we suggested</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        
-          <div class="parallax">
-            <div class="parallax-content">
-              <div class="parallax-layer">
-                <div class="layer-content">
-                  <h1>Contact Me</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-        
-        <script src="" async defer></script>
+        </div>
+      
     </body>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      // carousel
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.carousel');
+        var options = {
+            fullWidth: true, // Set to true for full-width carousel
+            indicators: true, // Set to false to hide slide indicators
+        };
+        var instances = M.Carousel.init(elems, options);
+      });
+      $(document).ready(function(){
+        $('.modal').modal();
+        $('#rsvp').submit(function(e){
+            e.preventDefault();
+
+            // $("#pre-loader").show()
+            // $('#content').addClass('less-opacity');
+
+            var formData = $(this).serialize();
+
+            var name = $('#name').val();
+            var contact_num = $('#contact_num').val();
+            var guest = $('#guest_name').val();
+
+            $.ajax({
+                url:'https://docs.google.com/forms/u/2/d/e/1FAIpQLSfK2XP-OULrwsIGFbACvcMLY7pfo986UZY6762VRch9Oz-Euw/formResponse',
+                type:'POST',
+                data: formData,
+                data: {
+                    "entry.1872929644": name,
+                    "entry.27472705": contact_num,
+                    "entry.1161807244": guest,
+                },
+                dataType: 'xml',
+                statusCode: {
+                    0:function() {
+                        M.toast({html: "We are overjoyed that you will be joining us on our special day! Your presence means the world to us and we can't wait to celebrate our wedding with you. Thank you for taking the time to RSVP and for sharing in our happiness. We look forward to creating unforgettable memories with you on our wedding day.", classes: 'green'});
+                        // $("#pre-loader").hide()
+                        // $('#content').removeClass('less-opacity');
+                        $('#name').val("");
+                        $('#contact_num').val("");
+                        $('#guest_name').val("");
+                        $('#cancel')[0].click()
+                    },
+                    200:function() {
+                        M.toast({html: "Oops! Something went wrong. Please try again", classes: 'red'});
+                        $("#pre-loader").hide()
+                        $('#content').removeClass('less-opacity');
+                    }
+                }
+               
+            });
+            $(this).trigger('reset');
+        });
+      });
+      // input for extra person
+      $("input[type='radio']").change(function(){
+          if($(this).val()=="1"){
+              $("#guest").show();
+              $("#guest_2").show();
+          } else {
+              $("#guest").hide();
+              $("#guest").val('');
+              $("#guest_2").hide();
+              $("#guest_2").val('');
+          }
+      });
+    </script>
 </html>
