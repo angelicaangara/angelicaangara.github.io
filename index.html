@@ -234,7 +234,7 @@
                       <form id="rsvp">
                           <div class="modal-content">
                               <h6 class="font-quicksand" style="color:#00432F;font-size:25px;">RSVP for our Wedding</h6>
-                              <span class="modal-subtitle font-quicksand">We can't wait to celebrate with you and your presence is important to us! We reserved 1 seat for you. The favor of your response is requested on or before August 23, 2023</span>
+                              <span class="modal-subtitle font-quicksand">We can't wait to celebrate with you and your presence is important to us! We reserved 1 seat for you. The favor of your response is requested on or before July 30, 2023</span>
                               <br/>
                               <div class="mt-20">
                                   <div class="input-field">
@@ -363,6 +363,26 @@
                       <div class="col m4 s12">
                         <h6>In Lieu of Gifts</h6>
                         <p>With all the blessings that God poured out on us we cannot ask for more. Your presence and prayers are all we request. But if you desire to bless us, monetary gifts are what we suggested</p>
+                        <form id="rsvp2" style="margin-top:50px">
+                          <h6>RSVP on our wedding</h6>
+                          <span class="modal-subtitle font-quicksand">We can't wait to celebrate with you and your presence is important to us! We reserved 1 seat for you. The favor of your response is requested on or before July 30, 2023</span>
+                          <br/>
+                          <div class="mt-20">
+                            <div class="input-field">
+                                <input type="text" placeholder="Input your first name and last name" id="name2" name="entry.183768109" class="validate" required>
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" name="entry.64734840" id="contact_num2" placeholder="Input your contact number" class="validate" required>
+                                <label for="number">Contact Number</label>
+                            </div>
+                          </div>
+                          <div style="text-align: right;">
+                            <button type="submit" class="btn waves-effect waves-light">
+                              <i class="material-icons right">send</i>&nbsp;&nbsp; Send
+                            </button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -418,6 +438,44 @@
                         $('#name').val("");
                         $('#contact_num').val("");
                         $('#guest_name').val("");
+                        $('#cancel')[0].click()
+                    },
+                    200:function() {
+                        M.toast({html: "Oops! Something went wrong. Please try again", classes: 'red'});
+                        $("#pre-loader").hide()
+                        $('#content').removeClass('less-opacity');
+                    }
+                }
+               
+            });
+            $(this).trigger('reset');
+        });
+        $('#rsvp2').submit(function(e){
+            e.preventDefault();
+
+            // $("#pre-loader").show()
+            // $('#content').addClass('less-opacity');
+
+            var formData = $(this).serialize();
+            var name = $('#name2').val();
+            var contact_num = $('#contact_num2').val();
+
+            $.ajax({
+                url:'https://docs.google.com/forms/u/2/d/e/1FAIpQLSfK2XP-OULrwsIGFbACvcMLY7pfo986UZY6762VRch9Oz-Euw/formResponse',
+                type:'POST',
+                data: formData,
+                data: {
+                    "entry.1872929644": name,
+                    "entry.27472705": contact_num,
+                },
+                dataType: 'xml',
+                statusCode: {
+                    0:function() {
+                        M.toast({html: "We are overjoyed that you will be joining us on our special day! Your presence means the world to us and we can't wait to celebrate our wedding with you. Thank you for taking the time to RSVP and for sharing in our happiness. We look forward to creating unforgettable memories with you on our wedding day.", classes: 'green'});
+                        // $("#pre-loader").hide()
+                        // $('#content').removeClass('less-opacity');
+                        $('#name2').val("");
+                        $('#contact_num2').val("");
                         $('#cancel')[0].click()
                     },
                     200:function() {
